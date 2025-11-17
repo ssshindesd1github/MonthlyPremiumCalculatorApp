@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="monthlypremiumcalculator.client.esproj">
+    <Build />
+    <Deploy />
+  </Project>
+</Solution>

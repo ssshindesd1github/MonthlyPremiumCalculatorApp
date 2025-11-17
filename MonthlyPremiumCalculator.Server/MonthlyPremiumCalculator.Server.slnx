@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="../monthlypremiumcalculator.client/monthlypremiumcalculator.client.esproj">
+    <Build />
+    <Deploy />
+  </Project>
+  <Project Path="MonthlyPremiumCalculator.Server.csproj" />
+</Solution>

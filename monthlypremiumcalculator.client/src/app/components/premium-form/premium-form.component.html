@@ -1,0 +1,54 @@
+<form [formGroup]="premiumForm" (ngSubmit)="calculatePremium()">
+  <h1>Premium Calculator</h1>
+  
+  <!-- Success Message -->
+  <div class="alert alert-success" *ngIf="successMessage">
+    {{ successMessage }}
+  </div>
+
+  <!-- Error Message -->
+  <div class="alert alert-error" *ngIf="errorMessage">
+    {{ errorMessage }}
+  </div>
+  
+  <div>
+    <label>Name:</label>
+    <input type="text" formControlName="name" required title="Enter your name" placeholder="Enter your name" [class.error]="isFieldInvalid('name')" />
+    <span class="error-message" *ngIf="isFieldInvalid('name')">{{ getFieldError('name') }}</span>
+  </div>
+
+  <div>
+    <label>Age Next Birthday:</label>
+    <input type="number" formControlName="ageNextBirthday" title="Enter your age next birthday" placeholder="Enter your age next birthday" [class.error]="isFieldInvalid('ageNextBirthday')" />
+    <span class="error-message" *ngIf="isFieldInvalid('ageNextBirthday')">{{ getFieldError('ageNextBirthday') }}</span>
+  </div>
+
+  <div>
+    <label>Date of Birth:</label>
+    <input type="date" formControlName="dob" title="Enter your date of birth" placeholder="YYYY-MM-DD" [class.error]="isFieldInvalid('dob')" />
+    <span class="error-message" *ngIf="isFieldInvalid('dob')">{{ getFieldError('dob') }}</span>
+  </div>
+
+  <div>
+    <label>Occupation:</label>
+    <select formControlName="occupation" title="Select your occupation" [class.error]="isFieldInvalid('occupation')">
+      <option value="" disabled selected>Select an occupation</option>
+      <option *ngFor="let occ of occupations" [value]="occ.name">{{ occ.name }}</option>
+    </select>
+    <span class="error-message" *ngIf="isFieldInvalid('occupation')">{{ getFieldError('occupation') }}</span>
+  </div>
+
+  <div>
+    <label>Death – Sum Insured:</label>
+    <input type="number" formControlName="deathSumInsured" title="Enter the death sum insured" placeholder="Enter the death sum insured" [class.error]="isFieldInvalid('deathSumInsured')" />
+    <span class="error-message" *ngIf="isFieldInvalid('deathSumInsured')">{{ getFieldError('deathSumInsured') }}</span>
+  </div>
+
+  <button type="submit" [disabled]="isLoading">
+    {{ isLoading ? 'Calculating...' : 'Calculate Premium' }}
+  </button>
+</form>
+
+<div *ngIf="premiumAmount !== null">
+  <h3>Monthly Premium: {{ premiumAmount | currency:'USD' }}</h3>
+</div>
