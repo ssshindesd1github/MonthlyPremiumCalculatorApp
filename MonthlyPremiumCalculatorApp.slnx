@@ -4,4 +4,5 @@
     <Deploy />
   </Project>
   <Project Path="MonthlyPremiumCalculator.Server/MonthlyPremiumCalculator.Server.csproj" />
+  <Project Path="MonthlyPremiumCalculator.Tests/MonthlyPremiumCalculator.Tests.csproj" />
 </Solution>
